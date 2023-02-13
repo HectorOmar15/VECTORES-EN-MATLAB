@@ -1,4 +1,4 @@
-%simulador de control freeback por Hector Omar Garcia Ballesteros
+%simulador de control feedback por Hector Omar Garcia Ballesteros
 %funcion de transferencia de planta
 Gp=tf([1],[6 11 6 1])
 %contastes y funcion PID
