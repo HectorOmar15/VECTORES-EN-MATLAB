@@ -1,0 +1,42 @@
+%simulador de control freeback por Hector Omar Garcia Ballesteros
+%funcion de transferencia de planta
+Gp=tf([1],[6 11 6 1])
+%contastes y funcion PID
+%PI
+Kc=4.5;
+Tao_I=10;
+Tao_D=0;
+%P
+%Kc=4.5;
+%Tao_I=0.000001;
+%Tao_D=0;
+%I
+%Kc=0;
+%Tao_I=10;
+%Tao_D=0;
+%D
+%Kc=0;
+%Tao_I=0.000001;
+%Tao_D=10;
+%PID
+%Kc=10;
+%Tao_I=10;
+%Tao_D=10;
+%PD
+%Kc=4.5;
+%Tao_I=0.000001;
+%Tao_D=10;
+
+Gc=Kc+tf([Kc],[Tao_I 0])+tf([Kc*Tao_D 0],[1])
+%funcion de transferencia de lazo cerrado
+G_CL=Gp*Gc/(1+Gp*Gc)
+[y,t]=step(G_CL)
+%grafica del PID
+plot(t,y,'k','LineWidth',1)
+xlabel('t,min', 'FontSize',10);
+ylabel('y(t','FontSize',10);
+axis([0 max(t) 0 1.1 * max(y)])%centra la ventana de grafica
+axis square
+
+
+
